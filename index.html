@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sharepeek — preview how your link will look when shared</title>
+<meta name="description" content="Type a title, description and image URL, and see how the link card looks on X, Discord, LinkedIn and WhatsApp — plus copyable Open Graph tags.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>share<span>peek</span></h1>
+  <p>See how your link will look before you post it. Type a title, description and image URL, and check the card on four platforms at once — then copy the meta tags that produce it.</p>
+  <p class="note">Everything runs in your browser. Nothing you type is sent anywhere; the shareable link just stores your inputs in the page's URL hash.</p>
+</header>
+
+<main>
+  <div class="layout">
+    <section class="panel">
+      <h2>Your link</h2>
+      <label>Page URL
+        <input id="field-url" type="url" placeholder="https://example.com/my-project" autocomplete="off">
+      </label>
+      <label>Title
+        <input id="field-title" type="text" placeholder="My Project — a tiny tool that does one thing well" maxlength="300" autocomplete="off">
+      </label>
+      <label>Description
+        <textarea id="field-description" placeholder="One or two sentences on what the page is. This is the text people actually read before clicking." maxlength="500"></textarea>
+      </label>
+      <label>Image URL
+        <input id="field-image" type="url" placeholder="https://example.com/og-image.png (1200 × 630 works best)" autocomplete="off">
+      </label>
+      <label>Site name (optional)
+        <input id="field-site" type="text" placeholder="Example" autocomplete="off">
+      </label>
+      <div class="row">
+        <button id="btn-sample" type="button">Load a sample</button>
+        <button id="btn-clear" type="button">Clear</button>
+      </div>
+      <h2 style="margin-top: 24px;">Checks</h2>
+      <ul id="checks"></ul>
+      <p id="image-note"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Meta tags to paste into your page</h2>
+      <pre id="meta-output"></pre>
+      <div class="row">
+        <button id="btn-copy-meta" class="primary" type="button">Copy meta tags</button>
+      </div>
+      <h2 style="margin-top: 24px;">Share this preview</h2>
+      <input id="share-link" type="text" readonly placeholder="Fill in a field and a shareable link appears here">
+      <div class="row" style="margin-top: 10px;">
+        <button id="btn-copy-link" type="button">Copy link</button>
+      </div>
+    </section>
+  </div>
+
+  <section class="previews" aria-label="Platform previews">
+    <div class="preview-card" id="preview-x">
+      <div class="label">X</div>
+      <div class="card-body">
+        <div class="card-image"></div>
+        <div class="card-text">
+          <div class="card-title"></div>
+          <div class="card-desc"></div>
+          <div class="card-domain"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card" id="preview-discord">
+      <div class="label">Discord</div>
+      <div class="card-body">
+        <div style="flex:1; min-width:0;">
+          <div class="card-text">
+            <div class="card-title"></div>
+            <div class="card-desc"></div>
+            <div class="card-domain"></div>
+          </div>
+          <div class="card-image"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card" id="preview-linkedin">
+      <div class="label">LinkedIn</div>
+      <div class="card-body">
+        <div class="card-image"></div>
+        <div class="card-text">
+          <div class="card-title"></div>
+          <div class="card-desc"></div>
+          <div class="card-domain"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card" id="preview-whatsapp">
+      <div class="label">WhatsApp</div>
+      <div class="card-body">
+        <div class="card-image"></div>
+        <div class="card-text">
+          <div class="card-title"></div>
+          <div class="card-desc"></div>
+          <div class="card-domain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Previews are approximations — platforms tweak their card rendering and caching without notice, and a cached old card can take days to refresh. If a live post looks different, check the platform's own card validator. Built by <a href="https://github.com/codewithkrrish">Krrish</a>.</p>
+</footer>
+
+<script src="sharepeek.js"></script>
+</body>
+</html>
